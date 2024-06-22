@@ -38,15 +38,15 @@ local function is_docker_running()
 end
 
 local function check_docker()
-	if not is_docker_installed() then
-		error("Docker is not installed. Docker is required for nvim-llama")
-		return false
-	end
-
-	if not is_docker_running() then
-		error("Docker is not running. ")
-		return false
-	end
+	-- if not is_docker_installed() then
+	-- 	error("Docker is not installed. Docker is required for nvim-llama")
+	-- 	return false
+	-- end
+	--
+	-- if not is_docker_running() then
+	-- 	error("Docker is not running. ")
+	-- 	return false
+	-- end
 
 	return true
 end
@@ -71,24 +71,26 @@ local function is_container_running()
 end
 
 local function check_ollama_container()
-	local container_name = "nvim-llama"
+	-- local container_name = "nvim-llama"
+	--
+	-- local exists_command = string.format("docker ps -a --filter 'name=^/nvim-llama$' --format '{{.Names}}'")
+	-- local exists_handle = io.popen(exists_command)
+	-- local exists_result = trim(exists_handle:read("*a"))
+	-- exists_handle:close()
+	--
+	-- if exists_result == "nvim-llama" then
+	-- 	if not is_container_running() then
+	-- 		-- Remove the stopped container and re-run a new one
+	-- 		local handle = io.popen("docker rm " .. container_name)
+	-- 		handle:close()
+	-- 		ollama.start()
+	-- 	end
+	-- else
+	-- 	-- start a new container as non by name exists
+	-- 	ollama.start()
+	-- end
 
-	local exists_command = string.format("docker ps -a --filter 'name=^/nvim-llama$' --format '{{.Names}}'")
-	local exists_handle = io.popen(exists_command)
-	local exists_result = trim(exists_handle:read("*a"))
-	exists_handle:close()
-
-	if exists_result == "nvim-llama" then
-		if not is_container_running() then
-			-- Remove the stopped container and re-run a new one
-			local handle = io.popen("docker rm " .. container_name)
-			handle:close()
-			ollama.start()
-		end
-	else
-		-- start a new container as non by name exists
-		ollama.start()
-	end
+	ollama.start()
 
 	return true
 end
