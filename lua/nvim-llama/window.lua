@@ -10,8 +10,8 @@ M.create_chat_window = function()
 	vim.api.nvim_win_set_buf(0, buf)
 
 	-- Set a few options for the new buffer
-	vim.api.nvim_win_set_option(0, "number", false)
-	vim.api.nvim_win_set_option(0, "relativenumber", false)
+	vim.api.nvim_set_option_value("number", false, {})
+	vim.api.nvim_set_option_value("relativenumber", false, {})
 
 	return buf
 end

@@ -7,7 +7,7 @@ local defaults = {
 	debug = false,
 
 	-- the model to use with Ollama.
-	model = "llama3",
+	model = "llama3:8b",
 }
 
 M.current = defaults
